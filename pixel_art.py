@@ -1,5 +1,6 @@
 import pygame
 from random import randint
+import pickle
 
 class Pixel:
     def __init__(self, x, y, size, color = None):
@@ -10,7 +11,7 @@ class Pixel:
             self.color = (0, 0, 0)
         else:
             self.color = color
-        self.rect = pygame.Rect(x, y, size, size)
+        self.rect = pygame.Rect(x + .5, y + .5, size - 1, size - 1)
 
     def draw(self, scr):
         pygame.draw.rect(scr, self.color, self.rect)
@@ -70,14 +71,20 @@ class Screen:
                                 j.color = self.pen_color
             
             
-            
+            self.scr.fill((128, 128, 128))
             for r in self.pixels:
                 for c in r:
                     c.draw(self.scr)
 
             pygame.display.update()
             self.clock.tick(60)
+        pygame.image.save(self.scr, "screenshot.jpeg")
         pygame.quit()
 
+
+if 
+out = open("last_save", 'wb')
 s = Screen(25, 25, 20)
 s.run()
+pickle.dump(s, out)
+out.close()
