@@ -82,9 +82,6 @@ class Screen:
         pygame.quit()
 
 
-if 
-out = open("last_save", 'wb')
-s = Screen(25, 25, 20)
+s = Screen(32, 32, 20)
 s.run()
-pickle.dump(s, out)
-out.close()
+
